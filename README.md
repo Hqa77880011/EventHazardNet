@@ -71,3 +71,7 @@ CF-IAE and policy value are computed only for simulator decisions carrying `true
 ## Modeling conventions
 
 Mark-specific projections retain missingness and sinusoidal gap features. Static covariates and operating regimes should be included as explicitly observed sensor fields; the compact encoder does not fit separate regime embeddings. RK4 integrates latent dynamics and competing-risk incidence on the declared step grid. No future observation is consumed during a decision rollout. Conditional censoring adjustment uses ten person-period bins; metric IPCW uses training-landmark censor survival. Recent-history nuisance features contain last observed values, mark counts and decision time. These choices replace unspecified architectures while preserving the separation between observation, maintenance and terminal outcomes.
+
+## Reproduction logic conventions
+
+A persistent warning is emitted at the second qualifying decision snapshot. Warning lead time is measured from that confirmation time; the first crossing alone cannot be used to claim an earlier warning.

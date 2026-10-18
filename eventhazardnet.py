@@ -412,7 +412,7 @@ def main():
     for _, group in test.groupby("asset"):
         group = group.sort_values("decision")
         active = group.risk.to_numpy() >= alert_threshold
-        persistent = np.where(active[:-1] & active[1:])[0]
+        persistent = np.where(active[:-1] & active[1:])[0] + 1
         if (group.cause > 0).any():
             leads.append(float(group.remaining.iloc[persistent[0]]) if len(persistent) else 0.)
     nll = []
